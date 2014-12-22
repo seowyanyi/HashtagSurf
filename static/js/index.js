@@ -1,14 +1,5 @@
 $(document).ready(function() {
 
-    /*
-
-    credits
-    click on hashtags
-    blog 
-    share
-    google analytics
-    clearer text display
-    */
 
     var searchSelector = 'input';
     var entered;
@@ -26,10 +17,8 @@ $(document).ready(function() {
         timer = setTimeout(function() {
             getPictures(entered);
             $(searchSelector).val('');
-       }, 600);
+       }, 800);
     });
-
-
 
 
     function getRandomInt (min, max) {
@@ -49,7 +38,8 @@ $(document).ready(function() {
                 console.log(imageUrl);
                 changeBackground(imageUrl);
                 updateTags(data.data[pickOne].tags);
-                updateUser(data.data[pickOne].user);
+                updateUser(data.data[pickOne]);
+
             },
             error: function(jqXHR, textStatus, errorThrown) {
 
@@ -66,10 +56,14 @@ $(document).ready(function() {
         $('#tags').text(newText);
     }
 
-    function updateUser(user) {
-        $('.credits p').text(user.full_name);
-        $('#profileImg').attr('src', 'http://scontent-b.cdninstagram.com/hphotos-xfa1/t51.2885-15/10838747_1549722431934005_1599035053_n.jpg');
-        console.log('pic updated');
+    function updateUser(obj) {
+        $('.credits p').text(obj.user.full_name);
+        $('.credits p').wrap($('<a>', {href: obj.link}));
+
+        $('#profileImg').attr('src', obj.user.profile_picture);
+        $('#profileImg').wrap($('<a>', {href: obj.link}));
+
+        $('.credits').find('a').attr('target', '_blank').css('text-decoration', 'none');;
     }
     function changeBackground(newUrl) {
         //check which layer is currently activated

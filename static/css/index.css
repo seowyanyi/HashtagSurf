@@ -43,7 +43,7 @@
 #tags {
     color: white;
     font-size: 18px;
-    background-color:rgba(0,0,0,0.25);
+    background-color:rgba(0,0,0,0.35);
 }
 
 .credits {
@@ -55,18 +55,20 @@
     font-style: italic;
     font-family: Georgia, Tahoma, Verdana;
     z-index: 10;
-    background-color:rgba(0,0,0,0.25);
 }
 
 .credits p {
     margin: 0.05em;
     color: white;
+    background-color:rgba(0,0,0,0.35);
 }
 
 #profileImg {
-    height: 50px;
-    width: 50px;
-    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 60px;
+    width: 60px;
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
@@ -93,5 +95,5 @@ form {
     font-size: 30px;
     color: white;
     font-weight: bold;
-    background-color:rgba(0,0,0,0.15);
+    background-color:rgba(0,0,0,0.35);
 }
