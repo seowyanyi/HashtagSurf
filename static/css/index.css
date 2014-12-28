@@ -121,7 +121,7 @@ form {
     bottom: 15px;
     margin-left: auto;
     margin-right: auto;
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
     width: 100%;
     height: 50px;
@@ -131,10 +131,8 @@ form {
 .blog, .fb-share-button, .github {
     float: left;
     position: relative;
-    top: 35%;
+    top: 30%;
 }
-
-
 
 .github {
     margin-right: 6%;
@@ -159,7 +157,6 @@ form {
     color:#99CCFF;
     text-decoration: none;
 }
-
 
 .footer span {
     color: white;
