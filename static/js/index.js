@@ -4,9 +4,11 @@ $(document).ready(function() {
     var searchSelector = 'input';
     var entered;
     var timer;
+    var toggleTimer;
 
     $(searchSelector).keydown(function(e) {
-        if (e.which == 32 || e.which == 51 || e.which == 18)
+        if (e.which == 32 || e.which == 51 || e.which == 18 || e.charCode == 13
+            || e.which == 13)
             event.preventDefault();
     });
 
@@ -15,9 +17,11 @@ $(document).ready(function() {
         clearTimeout(timer);
 
         timer = setTimeout(function() {
-            getPictures(entered);
-            $(searchSelector).val('');
-       }, 800);
+            if (entered != '') {
+                getPictures(entered);
+                $(searchSelector).val('');
+            }
+       }, 650);
     });
 
 
@@ -26,23 +30,24 @@ $(document).ready(function() {
     }
 
     function getPictures(queryStr) {
-        console.log('getting pictures for query ' + queryStr);
         var instagramUrl = 'https://api.instagram.com/v1/tags/' + queryStr
             + '/media/recent?client_id=d0f41df452734160a9f5d6c359d92d38&callback=callbackFunction';
         $.ajax({
             url: instagramUrl,
             dataType: 'jsonp',
             success: function(data) {
-                var pickOne = getRandomInt(0, data.data.length);
-                var imageUrl = data.data[pickOne].images.standard_resolution.url;
-                console.log(imageUrl);
-                changeBackground(imageUrl);
-                updateTags(data.data[pickOne].tags);
-                updateUser(data.data[pickOne]);
-
+                if (data.meta.code == 200 && data.data.length != 0) {
+                    var pickOne = getRandomInt(0, data.data.length);
+                    var imageUrl = data.data[pickOne].images.standard_resolution.url;
+                    changeBackground(imageUrl);
+                    updateTags(data.data[pickOne].tags);
+                    updateUser(data.data[pickOne]);
+                } else {
+                    $('#tags').text('No images found for #' + queryStr);
+                }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-
+                $('#tags').text('No images found for #' + queryStr);
             }
 
         });
@@ -62,6 +67,7 @@ $(document).ready(function() {
 
         $('#profileImg').attr('src', obj.user.profile_picture);
         $('#profileImg').wrap($('<a>', {href: obj.link}));
+        $('#profileImg').removeClass('transparent');
 
         $('.credits').find('a').attr('target', '_blank').css('text-decoration', 'none');;
     }
@@ -72,7 +78,10 @@ $(document).ready(function() {
             $('#background-image-top').css('background-image', 'url(' + newUrl + ')');
             //fade in new image
             $('#background-image-top').waitForImages(function() {
-                $('#background-image-top').toggleClass('transparent');
+                toggleTimer = setTimeout(function() {
+                    $('#background-image-top').toggleClass('transparent');
+                }, 550);
+                //$('#background-image-top').toggleClass('transparent');
             });
             
         } else {
@@ -80,7 +89,9 @@ $(document).ready(function() {
             $('#background-image-bot').css('background-image', 'url(' + newUrl + ')');
             //fade out old image
             $('#background-image-bot').waitForImages(function() {
-                $('#background-image-top').toggleClass('transparent');
+                toggleTimer = setTimeout(function() {
+                    $('#background-image-top').toggleClass('transparent');
+                }, 550);
             });
         }
     }
