@@ -21,7 +21,7 @@ $(document).ready(function() {
                 getPictures(entered);
                 $(searchSelector).val('');
             }
-       }, 650);
+       }, 600);
     });
 
 
@@ -80,7 +80,7 @@ $(document).ready(function() {
             $('#background-image-top').waitForImages(function() {
                 toggleTimer = setTimeout(function() {
                     $('#background-image-top').toggleClass('transparent');
-                }, 550);
+                }, 600);
                 //$('#background-image-top').toggleClass('transparent');
             });
             
@@ -91,7 +91,7 @@ $(document).ready(function() {
             $('#background-image-bot').waitForImages(function() {
                 toggleTimer = setTimeout(function() {
                     $('#background-image-top').toggleClass('transparent');
-                }, 550);
+                }, 600);
             });
         }
     }
