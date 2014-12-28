@@ -10,25 +10,51 @@
 
 
 <body>
+<!--social -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="credits">
-<img id="profileImg" src="" alt="thumbnail">
-<p></p>
+<div id="wrapper">
+    <!--Double layered background -->
+    <div id="background-image-bot"></div>
+    <div id="background-image-top"></div>
+
+    <!-- Profile picture and name -->
+    <div class="credits">
+        <img class="transparent" id="profileImg" src="" alt="thumbnail">
+        <p></p>
+    </div>
+
+    <!-- Main content -->
+    <div id="content">
+        <form id="searchForm">
+            <span id="label">#HASHTAG SURF</span>
+            <input type="text" placeholder="Search hashtags">
+            <p><span id="tags"></span></p>
+        </form>
+    </div>
+
+    <div class="footer">
+        <div class="blog">
+            <span><a href="http://www.seowyanyi.org/" target="_blank">Built by Yan Yi</a></span>
+        </div>
+        <div class="github">
+            <span><a href="https://github.com/seowyanyi/HashtagSurf" target="_blank"> Github</a></span>
+        </div>
+        
+        <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
+        
+    </div>
 </div>
 
-<div id ="searchDiv">
-<form id="searchForm">
-    <span id="label">#HASHTAG SURF</span>
-    <input type="text" placeholder="Search hashtags">
-    <p><span id="tags"></span></p>
-</form>
 </div>
-
-<div id="background-image-bot"></div>
-<div id="background-image-top"></div>
 
 </body>
-
-
 
 </html>
