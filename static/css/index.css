@@ -93,7 +93,7 @@ form {
     position: absolute;
     right: 10%;
     top: 10%;
-    font-size: 15px;
+    font-size: 14px;
     font-style: italic;
     font-family: Georgia, Tahoma, Verdana;
     z-index: 10;
@@ -122,13 +122,20 @@ form {
     margin-left: auto;
     margin-right: auto;
     font-family: 'Roboto', sans-serif;
+    font-size: 14px;
     text-align: center;
     width: 100%;
     height: 50px;
     background-color:rgba(0,0,0,0.35);   
 }
 
-.blog, .fb-share-button, .github {
+.blog {
+    float: left;
+    position: relative;
+    top: 35%;
+}
+
+.fb-share-button,.github {
     float: left;
     position: relative;
     top: 30%;
