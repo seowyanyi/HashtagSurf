@@ -80,7 +80,7 @@ $(document).ready(function() {
             $('#background-image-top').waitForImages(function() {
                 toggleTimer = setTimeout(function() {
                     $('#background-image-top').toggleClass('transparent');
-                }, 680);
+                }, 700);
             });
             
         } else {
@@ -90,7 +90,7 @@ $(document).ready(function() {
             $('#background-image-bot').waitForImages(function() {
                 toggleTimer = setTimeout(function() {
                     $('#background-image-top').toggleClass('transparent');
-                }, 680);
+                }, 700);
             });
         }
     }
