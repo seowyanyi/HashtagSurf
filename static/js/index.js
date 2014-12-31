@@ -7,7 +7,7 @@ $(document).ready(function() {
     var toggleTimer;
 
     $(searchSelector).keydown(function(e) {
-        if (e.which == 32 || e.which == 51 || e.which == 18 || e.charCode == 13
+        if (e.which == 32 || e.which == 18 || e.charCode == 13
             || e.which == 13)
             event.preventDefault();
     });
@@ -21,7 +21,7 @@ $(document).ready(function() {
                 getPictures(entered);
                 $(searchSelector).val('');
             }
-       }, 600);
+       }, 500);
     });
 
 
