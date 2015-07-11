@@ -30,11 +30,9 @@ $(document).ready(function() {
     }
 
     function getPictures(queryStr) {
-        var instagramUrl = 'https://api.instagram.com/v1/tags/' + queryStr
-            + '/media/recent?client_id=d0f41df452734160a9f5d6c359d92d38&callback=callbackFunction';
+        urlStr = 'http://hashtagsurf.seowyanyi.org/search/' + queryStr
         $.ajax({
-            url: instagramUrl,
-            dataType: 'jsonp',
+            url: urlStr,
             success: function(data) {
                 if (data.meta.code == 200 && data.data.length != 0) {
                     var pickOne = getRandomInt(0, data.data.length);
@@ -49,7 +47,6 @@ $(document).ready(function() {
             error: function(jqXHR, textStatus, errorThrown) {
                 $('#tags').text('No images found for #' + queryStr);
             }
-
         });
     }
 
